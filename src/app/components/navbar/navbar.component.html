@@ -1,1 +1,21 @@
-<h2>NavBar</h2>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<mat-toolbar color="accent" >
+    <a [routerLink]="'/'" mat-icon-button class="example-icon">
+        <span class="material-symbols-outlined">
+            menu_book
+            </span>
+        </a>
+        <span>Shiksha</span>
+       
+    
+    <span class="example-spacer"></span>
+    
+    <a [routerLink]="'/login'" mat-button >Login      
+    </a>
+    <a [routerLink]="'/signup'" mat-button class="mr10" >Register
+           
+    </a>
+  </mat-toolbar>
+  

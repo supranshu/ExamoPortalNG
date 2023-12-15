@@ -28,11 +28,54 @@ export class LoginComponent {
     //request server to generate token
     this.login.generateToken(this.loginData).subscribe(
       (data:any)=>{
-        console.log(data)
+        
+
+        //login... 
+        this.login.loginUser(data.token)
+        this.login.setUser(this.loginData)
+        
+        //redirect ADMIN to Admin and NORMAL to normal
+        // if(this.login.getUserRole()=='ADMIN'){
+        //   //admin dashboard
+        //   window.location.href="/admin"
+        // }else if(this.login.getUserRole()=='NORMAL'){
+        //   //user dashboard
+        //   window.location.href="/user-dashboard" 
+        // }
+        // else{
+        //   this.login.logout();
+           
+           
+        // }
+
+        this.login.getUser(this.loginData).subscribe(
+          (data:any)=>{
+           
+            if(data.authorities[0].authority=='ADMIN'){
+              window.location.href="/admin"
+            }
+            else if(data.authorities[0].authority=='NORMAL'){
+              window.location.href="/user-dashboard"
+            }
+            else{ 
+              this.login.logout();
+              
+            }
+          }
+        )
+
+ 
       },
       (error)=>{
-        console.log("error")
+        this.snack.open("Invalid Details!! Try Again",'',{
+          duration: 3000
+        })
       }
     );
   }
+  public loggedInData(){
+    return this.loginData
+  }
+  
 }
+

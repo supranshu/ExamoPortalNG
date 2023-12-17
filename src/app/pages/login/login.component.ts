@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 import { error } from 'console';
 
 @Component({
@@ -10,7 +11,7 @@ import { error } from 'console';
 })
 export class LoginComponent {
 
-  constructor(private snack:MatSnackBar,private login:LoginService){}
+  constructor(private snack:MatSnackBar,private login:LoginService,private router:Router){}
   public loginData={
     username: '',
     password: ''
@@ -31,31 +32,18 @@ export class LoginComponent {
         
 
         //login... 
-        this.login.loginUser(data.token)
+        this.login.loginUser(data.token,this.loginData)
         this.login.setUser(this.loginData)
         
-        //redirect ADMIN to Admin and NORMAL to normal
-        // if(this.login.getUserRole()=='ADMIN'){
-        //   //admin dashboard
-        //   window.location.href="/admin"
-        // }else if(this.login.getUserRole()=='NORMAL'){
-        //   //user dashboard
-        //   window.location.href="/user-dashboard" 
-        // }
-        // else{
-        //   this.login.logout();
-           
-           
-        // }
 
         this.login.getUser(this.loginData).subscribe(
           (data:any)=>{
            
             if(data.authorities[0].authority=='ADMIN'){
-              window.location.href="/admin"
+              this.router.navigateByUrl('/admin')
             }
             else if(data.authorities[0].authority=='NORMAL'){
-              window.location.href="/user-dashboard"
+              this.router.navigateByUrl('user-dashboard')
             }
             else{ 
               this.login.logout();

@@ -5,7 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
-import { admiGuard } from './services/admi.guard';
+// import { admiGuard } from './services/admi.guard';
 
 const routes: Routes = [
   {
@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'admin',
     component:DashboardComponent,
     pathMatch:'full',
-    canMatch:[admiGuard]
+    // canMatch:[admiGuard]
   },
   {
     path:'user-dashboard',

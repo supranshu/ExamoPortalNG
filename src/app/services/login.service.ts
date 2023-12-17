@@ -19,14 +19,15 @@ export class LoginService {
   }
 
   //login user: set Token in local storage
-  public loginUser(token: any){
+  public loginUser(token: any,user:any){
     localStorage.setItem("token",token);
+    localStorage.setItem("user",user)
     return true
   }
 
   //check if user is logged in or not
   public isLoggedIn(){
-    let tokenStr=localStorage.getItem("token")
+    let tokenStr=localStorage.getItem("user")
     if(tokenStr==undefined || tokenStr== '' || tokenStr==null){
       return false
 

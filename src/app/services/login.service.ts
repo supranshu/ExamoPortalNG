@@ -28,7 +28,7 @@ export class LoginService {
   //check if user is logged in or not
   public isLoggedIn(){
     let tokenStr=localStorage.getItem("user")
-    if(tokenStr==undefined || tokenStr== '' || tokenStr==null){
+    if(tokenStr==undefined || tokenStr== '' || tokenStr==null){ 
       return false
 
     }
@@ -41,6 +41,7 @@ export class LoginService {
   public logout(){
     localStorage.removeItem("token")
     localStorage.removeItem("user")
+    
     return true
     
   }

@@ -17,12 +17,13 @@
            
     </a>
     
+    
+
     <a
     (click)="logout()" 
     [routerLink]="'/login'"
     *ngIf="login.isLoggedIn()"
      mat-button class="mr10" >Logout
-           
     </a>
   </mat-toolbar>
   

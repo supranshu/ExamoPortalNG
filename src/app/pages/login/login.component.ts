@@ -38,7 +38,7 @@ export class LoginComponent {
 
         this.login.getUser(this.loginData).subscribe(
           (data:any)=>{
-           
+           console.log(data)
             if(data.authorities[0].authority=='ADMIN'){
               this.router.navigateByUrl('/admin')
             }
@@ -58,7 +58,7 @@ export class LoginComponent {
         this.snack.open("Invalid Details!! Try Again",'',{
           duration: 3000
         })
-      }
+      } 
     );
   }
   public loggedInData(){

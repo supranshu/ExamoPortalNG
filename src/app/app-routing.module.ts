@@ -5,6 +5,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+
 // import { admiGuard } from './services/admi.guard';
 
 const routes: Routes = [
@@ -26,9 +29,19 @@ const routes: Routes = [
   {
     path: 'admin',
     component:DashboardComponent,
-    pathMatch:'full',
+    
     // canMatch:[admiGuard]
-  },
+    
+    children:[{
+      path:'profile',
+      component:ProfileComponent,
+      
+    },{
+      path:'',
+      component:WelcomeComponent
+    }
+  ]
+  }, 
   {
     path:'user-dashboard',
     component:UserDashboardComponent,
